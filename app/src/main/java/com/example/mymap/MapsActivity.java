@@ -41,6 +41,7 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PointOfInterest;
+import com.google.maps.android.SphericalUtil;
 
 import java.util.Locale;
 
@@ -54,6 +55,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Satelite satelite;
     Hibrido hibrido;
     Terreno terreno;
+
+    LatLng myloc= new LatLng(-18.0237082,-70.2673986);
+    LatLng Roma = new LatLng(41.902609, 12.494847);
+    LatLng Tokyo = new LatLng(35.680513, 139.769051);
+    LatLng Berlin = new LatLng(52.516934, 13.403190);
+    LatLng Paris= new LatLng(48.843489, 2.355331);
 
 
     private GoogleMap mMap;
@@ -114,17 +121,28 @@ return  true;
                 switch (i){
                     case 0:
                         setFragment(normal);
+                        distance = SphericalUtil.computeDistanceBetween(myloc, Tokyo);
+                        Toast.makeText(MapsActivity.this,"LA DISTANCIA DESDE SU UBICACION ES DE"+":"+" "+ distance/1000 +" "+ "KILOMETROS", Toast.LENGTH_LONG).show();
 
+                        Log.e("distancia", "distancia en km ="+distance/1000);
                         break;
                     case 1:
                         setFragment(satelite);
+                        distance = SphericalUtil.computeDistanceBetween(myloc, Berlin);
+                        Toast.makeText(MapsActivity.this,"LA DISTANCIA DESDE SU UBICACION ES DE"+":"+" "+ distance/1000 +" "+ "KILOMETROS", Toast.LENGTH_LONG).show();
+                        Log.e("distancia", "distancia en km "+distance/1000);
                         break;
                     case 2:
                         setFragment(hibrido);
+                        distance = SphericalUtil.computeDistanceBetween(myloc, Roma);
+                        Toast.makeText(MapsActivity.this,"LA DISTANCIA DESDE SU UBICACION ES DE"+":"+" "+ distance/1000 +" "+ "KILOMETROS", Toast.LENGTH_LONG).show();
+                        Log.e("distancia", "distancia en km ="+distance/1000);
                         break;
                     case 3:
                         setFragment(terreno);
-
+                        distance = SphericalUtil.computeDistanceBetween(myloc, Paris);
+                        Toast.makeText(MapsActivity.this,"LA DISTANCIA DESDE SU UBICACION ES DE"+":"+" "+ distance/1000 +" "+ "KILOMETROS", Toast.LENGTH_LONG).show();
+                        Log.e("distancia", "distancia en km ="+distance/1000);
                         break;
                 }
             }
@@ -177,7 +195,8 @@ return  true;
                 .position(tacna, 100);
         mMap.addGroundOverlay(iconOverlay);
 
-        
+
+
 
         setMapLongClick(mMap);
         setPoiClick(mMap);

@@ -70,9 +70,7 @@ public class Hibrido extends Fragment {
                     .position(roma, 15);
             mMap.addGroundOverlay(iconOverlay);
 
-            distance = SphericalUtil.computeDistanceBetween(myloc, Roma);
 
-            Log.e("distancia", "distancia en km ="+distance/1000);
 
             setMapLongClick(mMap);
             setPoiClick(mMap);
